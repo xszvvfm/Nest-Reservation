@@ -2,8 +2,18 @@ import Joi from 'joi';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+
+import { AuthModule } from './auth/auth.module';
+import { User } from './user/entities/user.entity';
+import { UserModule } from './user/user.module';
+import { Show } from './show/entities/show.entity';
+import { ShowModule } from './show/show.module';
+import { Reservation } from './reservation/entities/reservation.entity';
+import { ReservationModule } from './reservation/reservation.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -16,7 +26,7 @@ const typeOrmModuleOptions = {
     host: configService.get('DB_HOST'),
     port: configService.get('DB_PORT'),
     database: configService.get('DB_NAME'),
-    entities: [],
+    entities: [User, Show, Reservation],
     synchronize: configService.get('DB_SYNC'),
     logging: true,
   }),
@@ -38,8 +48,12 @@ const typeOrmModuleOptions = {
       }),
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
+    AuthModule,
+    UserModule,
+    ShowModule,
+    ReservationModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
