@@ -25,7 +25,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   // 검증 로직
   // validate 함수에서 유저 서비스의 함수 이용해 실제로 있는 유저인지 체크. 유저가 없으면 인증에 실패, 그렇지 않으면 인증 처리
   async validate(payload: any) {
-    // TODO. payload로 전달된 데이터를 통해 실제 유저 정보를 조회해야 해요!
     // JWT 검증 자체는 통과했으나, 검증한 데이터 자체의 오류 존재할 수 있음. payload로 전달된 데이터가 진짜 존재하는지 확인 후, 존재 시 통과
     const user = await this.authService.findByEmail(payload.email);
     if (_.isNil(user)) {
