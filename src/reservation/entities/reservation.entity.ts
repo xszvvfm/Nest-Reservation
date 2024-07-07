@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 import { User } from 'src/user/entities/user.entity';
-import { Show } from 'src/show/entities/show.entity';
+import { Schedule } from 'src/show/entities/show-schedule.entity';
 
 @Entity({
   name: 'reservations',
@@ -21,7 +21,7 @@ export class Reservation {
   userId: number;
 
   @Column()
-  showId: number;
+  scheduleId: number;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -32,6 +32,6 @@ export class Reservation {
   @ManyToOne(() => User, (user) => user.reservations)
   user: User;
 
-  @ManyToOne(() => Show, (show) => show.reservations)
-  show: Show;
+  @ManyToOne(() => Schedule, (schedule) => schedule.reservation)
+  schedule: Schedule;
 }
