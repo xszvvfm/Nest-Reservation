@@ -39,4 +39,15 @@ export class ShowController {
       data: findShow,
     };
   }
+
+  /** 공연 검색 **/
+  @Get('search')
+  async findByTitle(@Query('title') title: string) {
+    const searchShow = await this.showService.findByTitle(title);
+
+    return {
+      message: '공연 검색에 성공했습니다.',
+      data: searchShow,
+    };
+  }
 }

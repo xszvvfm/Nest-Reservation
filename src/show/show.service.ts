@@ -56,4 +56,14 @@ export class ShowService {
 
     return show;
   }
+
+  /** 공연 검색 **/
+  async findByTitle(title: string) {
+    const shows = await this.showRepository.find({
+      where: { title },
+      relations: ['schedules'],
+    });
+
+    return shows;
+  }
 }
