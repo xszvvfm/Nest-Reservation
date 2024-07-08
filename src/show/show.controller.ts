@@ -1,13 +1,26 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { ShowService } from './show.service';
 import { CreateShowDto } from './dto/create-show.dto';
 import { Category } from './types/showCategory.type';
+import { RolesGuard } from 'src/auth/roles.guard';
+import { Roles } from 'src/auth/roles.decorator';
+import { Role } from 'src/user/types/userRole.type';
 
 @Controller('show')
 export class ShowController {
   constructor(private readonly showService: ShowService) {}
 
   /** 공연 등록 **/
+  @Roles(Role.Admin)
+  @UseGuards(RolesGuard)
   @Post()
   async create(@Body() createShowDto: CreateShowDto) {
     const newShow = await this.showService.create(createShowDto);
