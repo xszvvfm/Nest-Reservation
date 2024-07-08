@@ -4,11 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Show } from './entities/show.entity';
 import { ShowController } from './show.controller';
 import { ShowService } from './show.service';
-
-import { Reservation } from 'src/reservation/entities/reservation.entity';
+import { Schedule } from './entities/show-schedule.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Show, Reservation])],
+  imports: [TypeOrmModule.forFeature([Show, Schedule])],
   providers: [ShowService],
   controllers: [ShowController],
 })

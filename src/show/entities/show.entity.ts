@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 import { Category } from '../types/showCategory.type';
-import { Reservation } from 'src/reservation/entities/reservation.entity';
+import { Schedule } from './show-schedule.entity';
 
 @Index('title', ['title'], { unique: true })
 @Entity({
@@ -32,13 +32,10 @@ export class Show {
   place: string;
 
   @Column()
+  price: number;
+
+  @Column()
   image: string;
-
-  @Column({ type: 'date' })
-  date: Date;
-
-  @Column({ type: 'time' })
-  time: number;
 
   @Column()
   seats: number;
@@ -49,6 +46,6 @@ export class Show {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Reservation, (reservation) => reservation.show)
-  reservations: Reservation[];
+  @OneToMany(() => Schedule, (schedule) => schedule.show)
+  schedules: Schedule[];
 }
