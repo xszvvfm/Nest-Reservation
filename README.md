@@ -58,15 +58,13 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## [API 명세서](https://xszvvfm.notion.site/Nest-js-API-bf51a7a4860c476a80c7913e2c5e30c4)
+
+## [ERD 설계](https://drawsql.app/teams/erd-72/diagrams/nest-reservation)
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
