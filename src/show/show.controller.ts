@@ -18,7 +18,11 @@ import { Role } from 'src/user/types/userRole.type';
 export class ShowController {
   constructor(private readonly showService: ShowService) {}
 
-  /** 공연 등록 **/
+  /**
+   * 공연 등록
+   * @param createShowDto
+   * @returns
+   */
   @Roles(Role.Admin)
   @UseGuards(RolesGuard)
   @Post()
@@ -31,7 +35,11 @@ export class ShowController {
     };
   }
 
-  /** 공연 목록 조회 **/
+  /**
+   * 공연 목록 조회
+   * @param category
+   * @returns
+   */
   @Get()
   async findAll(@Query('category') category: Category) {
     const findShows = await this.showService.findAll(category);
@@ -42,7 +50,11 @@ export class ShowController {
     };
   }
 
-  /** 공연 상세 조회 **/
+  /**
+   * 공연 상세 조회
+   * @param id
+   * @returns
+   */
   @Get(':id')
   async findOne(@Param('id') id: number) {
     const findShow = await this.showService.findOne(id);
@@ -53,7 +65,11 @@ export class ShowController {
     };
   }
 
-  /** 공연 검색 **/
+  /**
+   * 공연 검색
+   * @param title
+   * @returns
+   */
   @Get('search')
   async findByTitle(@Query('title') title: string) {
     const searchShow = await this.showService.findByTitle(title);

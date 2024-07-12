@@ -10,7 +10,11 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  /** 사용자 정보 조회 **/
+  /**
+   * 사용자 정보 조회
+   * @param user
+   * @returns
+   */
   // JWT 인증 유저
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
