@@ -12,7 +12,11 @@ import { User } from 'src/user/entities/user.entity';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  /** 회원가입 **/
+  /**
+   * 회원가입
+   * @param signUpDto
+   * @returns
+   */
   @Post('sign-up')
   async signUp(@Body() signUpDto: SignUpDto) {
     const newUser = await this.authService.signUp(
@@ -27,7 +31,11 @@ export class AuthController {
     };
   }
 
-  /** 로그인 **/
+  /**
+   * 로그인
+   * @param signInDto
+   * @returns
+   */
   @Post('sign-in')
   async signIn(@Body() signInDto: SignInDto) {
     const user = await this.authService.signIn(

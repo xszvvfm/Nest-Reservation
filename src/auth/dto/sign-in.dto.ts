@@ -1,4 +1,4 @@
-import { PickType } from '@nestjs/mapped-types';
+import { PickType } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { User } from 'src/user/entities/user.entity';
 

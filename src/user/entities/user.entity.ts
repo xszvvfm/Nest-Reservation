@@ -19,12 +19,24 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
+  /**
+   * 이메일
+   * @example "aaaa1234@naver.com"
+   */
   @Column({ type: 'varchar', unique: true, nullable: false })
   email: string;
 
+  /**
+   * 비밀번호
+   * @example "1234"
+   */
   @Column({ type: 'varchar', select: false, nullable: false })
   password: string;
 
+  /**
+   * 닉네임
+   * @example "가나다"
+   */
   @Column({ type: 'varchar', nullable: true })
   nickname: string;
 
